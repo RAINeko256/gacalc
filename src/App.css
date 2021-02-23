@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/*
+  白、薄いグレー、グレー、赤
+  #d3d6db
+  #3a4750
+  #303841
+  #be3144
+*/
+@media screen and (max-width:600px){
+  .header{
+    width: 100%;
+  }
+  .main{
+    width: 100%;
+  }
+  .footer{
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (min-width:601px) and (max-width:999px){
+  .header{
+    width: 600px;
+  }
+  .main{
+    width: 600px;
+  }
+  .footer{
+    width: 600px;
+  }
+}
+@media screen and (min-width:1000px){
+  .header{
+    width: 60%;
+  }
+  .main{
+    width: 60%;
+  }
+  .footer{
+    width: 60%;
+  }
+}
+/*ヘッダー*/
+.header{
+  width: 60%;
+  height: 10%;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #303841;
+}
+
+.header p{
   color: white;
+  margin: 2% 2%;
+}
+/*コンテンツ*/
+.main{
+  width: 60%;
+  height: 80vh;
+  margin: 0 auto;
+
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/*フッター*/
+.footer{
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer p{
+  margin: 0;
+  margin-bottom: 1%;
+}
+.footer .item{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.footer .item a{
+  text-decoration: none;
+}
+.footer .item a div{
+  display: flex;
+  flex-wrap: nowrap;
+  vertical-align: middle;
+}
+.footer .item .twitter{
+  margin: auto 0;
+  height: 32px;
+  color: #00acee;
 }
