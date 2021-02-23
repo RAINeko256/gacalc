@@ -41,7 +41,6 @@
 }
 /*ヘッダー*/
 .header{
-  width: 60%;
   height: 10%;
   margin: 0 auto;
   display: flex;
@@ -54,7 +53,6 @@
 }
 /*コンテンツ*/
 .main{
-  width: 60%;
   height: 80vh;
   margin: 0 auto;
 
@@ -63,7 +61,6 @@
 
 /*フッター*/
 .footer{
-  width: 60%;
   margin: 0 auto;
   background-color: white;
 }
