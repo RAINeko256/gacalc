@@ -30,6 +30,7 @@ function Calc() {
 
   return (
     <div className="main">
+      <p>所持素材</p>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           id="outlined-number"
@@ -39,6 +40,9 @@ function Calc() {
             shrink: true,
           }}
           variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
         />
         <TextField
           id="outlined-number"
@@ -48,6 +52,9 @@ function Calc() {
             shrink: true,
           }}
           variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
         />
         <TextField
           id="outlined-number"
@@ -57,6 +64,9 @@ function Calc() {
             shrink: true,
           }}
           variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
         />
         <TextField
           id="outlined-number"
@@ -66,6 +76,115 @@ function Calc() {
             shrink: true,
           }}
           variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+        />
+      </form>
+      <p>必要素材</p>
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField
+          id="outlined-number"
+          label="金"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+        />
+        <TextField
+          id="outlined-number"
+          label="紫"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+        />
+        <TextField
+          id="outlined-number"
+          label="青"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+        />
+        <TextField
+          id="outlined-number"
+          label="緑"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+        />
+      </form>
+      <p>不足素材</p>
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField
+          id="outlined-number"
+          label="金"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          disabled="true"
+        />
+        <TextField
+          id="outlined-number"
+          label="紫"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          disabled="true"
+        />
+        <TextField
+          id="outlined-number"
+          label="青"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          disabled="true"
+        />
+        <TextField
+          id="outlined-number"
+          label="緑"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          disabled="true"
         />
       </form>
     </div>
