@@ -1,7 +1,9 @@
 import "./App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button'
 import { makeStyles } from "@material-ui/core/styles";
+
 
 //ヘッダー
 function Header() {
@@ -22,7 +24,7 @@ function Header() {
 class Calc extends React.Component{
   constructor(props){
     super(props);
-    this.handleChange=this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.calculate = this.calculate.bind(this);
     this.state={
       pm : 0,
@@ -39,21 +41,66 @@ class Calc extends React.Component{
       sp : 0,
       sb : 0,
       sg : 0,
-      //s*は不足分（表示する素材の個数)
+      //s*は合成により作れる個数（表示する素材の個数)
     };
   }
 
-  async calculate(){
-    //const m_shotage , p_shortage , b_shortage , g_shortage;
-    this.state.sg = (this.state.pg < this.state.ng) ? (this.state.ng - this.state.pg) : 0;
-    console.log(this.state.sg);
+  calculate=()=>{
+    //let pm,pp,pb,pg,nm,np,nb,ng,sm,sp,sb,sg;
+    let [pm,pp,pb,pg,nm,np,nb,ng,tsm,tsp,tsb,tsg]=
+      [this.state.pm,this.state.pp,this.state.pb,this.state.pg,this.state.nm,this.state.np,this.state.nb,this.state.ng,this.state.sm,this.state.sp,this.state.sb,this.state.sg];
+    let make_b,make_p,make_m;
+    let poss_b,poss_p,poss_m;
+    //p*はposession_*、所持している素材
+    //n*はnecessary_*、必要素材
+    //s*はshortage_*、不足素材 ←現在、所持数を表示させる仕様になっているため、要変更！
+    //make_*は合成した分
+    //ts*はtemporary_shortage_[color_head_letter]で、setStateするときに文字が被らないようにしてる
+    //
+    //必要数以上の素材を持っている場合((make_*+p*)>=n*)は、
+    //必要素材が集まっているので、所持数は必要数と等しい(n*)
+    //そうでない場合は、所持数は(make_* + p*)と等しい
+
+    //緑は合成で作れないので、make_gという値はない
+    tsg = (pg >= ng) ? (ng) : (pg);
+    
+    make_b=Math.floor((((pg - ng)>=0)?(pg-ng):0)/3);
+    make_b=parseInt(make_b);
+    pb=parseInt(pb);
+    tsb = ((make_b + pb)>=nb)?(nb):(make_b + pb);
+
+    make_p=Math.floor(((((pb + make_b)- nb)>=0)?((pb+make_b)-nb):0)/3);
+    make_p=parseInt(make_p);
+    pp=parseInt(pp);
+    tsp = ((make_p + pp)>=np)?(np):(make_p + pp);
+
+    make_m=Math.floor(((((pp + make_p)- np)>=0)?((pp+make_p)-np):0)/3)
+    make_m=parseInt(make_m);
+    pm=parseInt(pm);
+    tsm = ((make_m + pm)>=nm)?(nm):(make_m + pm);
+
+    console.log(make_b,make_p,make_m);
+    
+    //setState
+    this.setState({
+      sg : tsg
+      });
+    this.setState({
+      sb : tsb
+      });
+    this.setState({
+      sp : tsp
+      });
+    this.setState({
+      sm : tsm
+      });
   }
 
   handleChange = props => event =>{
     this.setState({
     [props] : event.target.value
     });
-    this.calculate();
+    
   };
 
   render(){
@@ -181,7 +228,7 @@ class Calc extends React.Component{
             onChange={this.handleChange('ng')}
           />
         </form>
-        <p>不足素材</p>
+        <p>合成により作れる素材</p>
         <form className={this.props.classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-number"
@@ -240,6 +287,7 @@ class Calc extends React.Component{
             value={this.state.sg}
           />
         </form>
+        <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
       </div>
     );
   }
