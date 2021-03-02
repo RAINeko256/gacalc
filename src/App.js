@@ -1,8 +1,9 @@
 import "./App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button'
+import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles";
+import Explain from "./explain"
 
 
 //ヘッダー
@@ -211,10 +212,10 @@ function Footer() {
       <p>お問い合わせはDMまで</p>
       <div className="item">
         <a href="https://twitter.com/RAINEKO256">
-          <div>
+          <Button variant="contained">
             <i class="fab fa-twitter fa-2x twitter"></i>
             <p>@RAINeko256</p>
-          </div>
+          </Button>
         </a>
       </div>
       <p>Copyrights RAINeko</p>
@@ -239,6 +240,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="main">
+        <Explain/>
         <Calc classes={classes}/>
       </div>
       <Footer />
