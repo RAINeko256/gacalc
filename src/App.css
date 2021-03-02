@@ -86,9 +86,11 @@
   background-color: #303841;
   height: 10%;
 }
+
 .footer > div{
   margin-left: 0.5rem;
 }
+
 .footer p {
   margin: 0;
   margin-bottom: 1%;
@@ -100,9 +102,11 @@
   display: flex;
   flex-wrap: nowrap;
 }
+
 .footer Button p{
   color: #303841;
 }
+
 .footer .item a {
   text-decoration: none;
 }

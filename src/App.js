@@ -5,7 +5,6 @@ import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles";
 import Explain from "./explain"
 
-
 //ヘッダー
 function Header() {
   return (
@@ -89,7 +88,6 @@ class FormTextFields extends React.Component{
     );
   }
 }
-
 
 class Calc extends React.Component{
   constructor(props){
