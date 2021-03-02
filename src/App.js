@@ -10,7 +10,7 @@ function Header() {
   return (
     <div className="header">
       <div>
-        <p className="h_title">GAcalc</p>
+        <h1 className="h_title">GAcalc</h1>
         <p className="h_sub_title">Genshin Ascensions calculator</p>
       </div>
     </div>
@@ -171,22 +171,9 @@ class Calc extends React.Component{
     
   };
 
-  /*returnObject関数はFormTextFieldsにわたすPropsを作る専用の関数で、フォーマットは見ての通り
-    レア度の高い順にfour,three,two,oneという様なオブジェクトを作成する
-  returnObject(...theArgs){
-    return(
-      {
-        four:theArgs[0],
-        three:theArgs[1],
-        two:theArgs[2],
-        one:theArgs[3],
-      }
-    );
-  }*/
-
   render(){
     return (
-      <div className="main">
+      <div className="calc">
         <p>所持素材</p>
           <FormTextFields
             classes={this.props.classes}
@@ -203,7 +190,7 @@ class Calc extends React.Component{
             var={['nm','np','nb','ng']}
             onChange={this.handleChange}
           />
-        <p>合成により作れる素材</p>
+        <p>総合所持数</p>
         <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
@@ -220,6 +207,7 @@ class Calc extends React.Component{
 function Footer() {
   return (
     <div className="footer">
+      <div>
       <p>お問い合わせはDMまで</p>
       <div className="item">
         <a href="https://twitter.com/RAINEKO256">
@@ -230,10 +218,12 @@ function Footer() {
         </a>
       </div>
       <p>Copyrights RAINeko</p>
+      </div>
     </div>
   );
 }
 
+//App
 function App() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -248,7 +238,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Calc classes={classes}/>
+      <div className="main">
+        <Calc classes={classes}/>
+      </div>
       <Footer />
     </div>
   );

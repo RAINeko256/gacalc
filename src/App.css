@@ -39,6 +39,7 @@
     width: 60%;
   }
 }
+
 /*ヘッダー*/
 .header {
   height: 10%;
@@ -46,11 +47,16 @@
   display: flex;
   background-color: #303841;
 }
-
-.header p {
-  color: white;
-  margin: 2% 2%;
+.header div{
+  width: 100%;
+  padding: 0.5rem;
 }
+.header h1, .header p {
+  color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /*コンテンツ*/
 .main {
   height: 80vh;
@@ -58,17 +64,29 @@
 
   background-color: white;
 }
+.main .calc form{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.calc Button{
+  margin-left: 0.5rem;
+}
 .main p{
-  margin: 0;
+  margin: 0%;
+  margin-left: 0.5rem;
 }
 .main form{
   display: flex;
   justify-content: space-between;
 }
+
 /*フッター*/
 .footer {
   margin: 0 auto;
   background-color: white;
+}
+.footer > div{
+  margin-left: 0.5rem;
 }
 .footer p {
   margin: 0;
