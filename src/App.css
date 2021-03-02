@@ -5,83 +5,89 @@
   #303841
   #be3144
 */
-@media screen and (max-width:600px){
-  .header{
+@media screen and (max-width: 600px) {
+  .header {
     width: 100%;
   }
-  .main{
+  .main {
     width: 100%;
   }
-  .footer{
+  .footer {
     width: 100%;
   }
 }
 
-@media screen and (min-width:601px) and (max-width:999px){
-  .header{
+@media screen and (min-width: 601px) and (max-width: 999px) {
+  .header {
     width: 600px;
   }
-  .main{
+  .main {
     width: 600px;
   }
-  .footer{
+  .footer {
     width: 600px;
   }
 }
-@media screen and (min-width:1000px){
-  .header{
+@media screen and (min-width: 1000px) {
+  .header {
     width: 60%;
   }
-  .main{
+  .main {
     width: 60%;
   }
-  .footer{
+  .footer {
     width: 60%;
   }
 }
 /*ヘッダー*/
-.header{
+.header {
   height: 10%;
   margin: 0 auto;
   display: flex;
   background-color: #303841;
 }
 
-.header p{
+.header p {
   color: white;
   margin: 2% 2%;
 }
 /*コンテンツ*/
-.main{
+.main {
   height: 80vh;
   margin: 0 auto;
 
   background-color: white;
 }
-
+.main p{
+  margin: 0;
+}
+.main form{
+  display: flex;
+  justify-content: space-between;
+}
 /*フッター*/
-.footer{
+.footer {
   margin: 0 auto;
   background-color: white;
 }
-.footer p{
+.footer p {
   margin: 0;
   margin-bottom: 1%;
 }
-.footer .item{
+.footer .item {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
 }
-.footer .item a{
+.footer .item a {
   text-decoration: none;
 }
-.footer .item a div{
+.footer .item a div {
   display: flex;
   flex-wrap: nowrap;
   vertical-align: middle;
 }
-.footer .item .twitter{
+.footer .item .twitter {
   margin: auto 0;
   height: 32px;
   color: #00acee;
