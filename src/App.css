@@ -6,39 +6,26 @@
   #be3144
 */
 @media screen and (max-width: 600px) {
-  .header {
-    width: 100%;
-  }
-  .main {
-    width: 100%;
-  }
-  .footer {
+  .App{
     width: 100%;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 999px) {
-  .header {
-    width: 600px;
-  }
-  .main {
-    width: 600px;
-  }
-  .footer {
+  .App{
     width: 600px;
   }
 }
 @media screen and (min-width: 1000px) {
-  .header {
-    width: 60%;
-  }
-  .main {
-    width: 60%;
-  }
-  .footer {
+  .App{
     width: 60%;
   }
 }
+.App{
+  margin: 0 auto;
+  background-color: white;
+}
+
 /*ヘッダー*/
 .header {
   height: 10%;
@@ -46,39 +33,80 @@
   display: flex;
   background-color: #303841;
 }
-
-.header p {
-  color: white;
-  margin: 2% 2%;
+.header div{
+  width: 100%;
+  padding: 0.5rem;
 }
+.header h1, .header p {
+  color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /*コンテンツ*/
 .main {
-  height: 80vh;
+  height: 80%;
   margin: 0 auto;
 
   background-color: white;
 }
-.main p{
-  margin: 0;
+.main>div{
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: thin dashed black;
+}
+.calc{
+  margin-bottom: 4rem !important;
+}
+.main .calc form{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.calc Button{
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+.calc p{
+  margin: 0%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .main form{
   display: flex;
   justify-content: space-between;
 }
+
 /*フッター*/
 .footer {
   margin: 0 auto;
-  background-color: white;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #303841;
+  height: 10%;
 }
+
+.footer > div{
+  margin-left: 0.5rem;
+}
+
 .footer p {
   margin: 0;
   margin-bottom: 1%;
+
+  color: white;
 }
 .footer .item {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
 }
+
+.footer Button p{
+  color: #303841;
+}
+
 .footer .item a {
   text-decoration: none;
 }

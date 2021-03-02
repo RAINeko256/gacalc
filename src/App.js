@@ -1,16 +1,16 @@
 import "./App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button'
+import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles";
-
+import Explain from "./explain"
 
 //ヘッダー
 function Header() {
   return (
     <div className="header">
       <div>
-        <p className="h_title">GAcalc</p>
+        <h1 className="h_title">GAcalc</h1>
         <p className="h_sub_title">Genshin Ascensions calculator</p>
       </div>
     </div>
@@ -19,7 +19,75 @@ function Header() {
 
 //コンテンツ
 
+class FormTextFields extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
+  render(){
+    const vars=[this.props.var[0],this.props.var[1],this.props.var[2],this.props.var[3]];
+    return(
+      <form className={this.props.classes.root} noValidate autoComplete="off">
+          <TextField
+            id="outlined-number"
+            label={this.props.rarity[0]}
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            className="input"
+            style={{width : '20%'}}
+            size="small"
+            value={this.props.val[0]}
+            onChange={this.props.onChange(vars[0])}
+          />
+          <TextField
+            id="outlined-number"
+            label={this.props.rarity[1]}
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            className="input"
+            style={{width : '20%'}}
+            size="small"
+            value={this.props.val[1]}
+            onChange={this.props.onChange(vars[1])}
+          />
+          <TextField
+            id="outlined-number"
+            label={this.props.rarity[2]}
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            className="input"
+            style={{width : '20%'}}
+            size="small"
+            value={this.props.val[2]}
+            onChange={this.props.onChange(vars[2])}
+          />
+          <TextField
+            id="outlined-number"
+            label={this.props.rarity[3]}
+            type="number"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            className="input"
+            style={{width : '20%'}}
+            size="small"
+            value={this.props.val[3]}
+            onChange={this.props.onChange(vars[3])}
+          />
+        </form>
+    );
+  }
+}
 
 class Calc extends React.Component{
   constructor(props){
@@ -50,7 +118,6 @@ class Calc extends React.Component{
     let [pm,pp,pb,pg,nm,np,nb,ng,tsm,tsp,tsb,tsg]=
       [this.state.pm,this.state.pp,this.state.pb,this.state.pg,this.state.nm,this.state.np,this.state.nb,this.state.ng,this.state.sm,this.state.sp,this.state.sb,this.state.sg];
     let make_b,make_p,make_m;
-    let poss_b,poss_p,poss_m;
     //p*はposession_*、所持している素材
     //n*はnecessary_*、必要素材
     //s*はshortage_*、不足素材 ←現在、所持数を表示させる仕様になっているため、要変更！
@@ -96,197 +163,40 @@ class Calc extends React.Component{
       });
   }
 
-  handleChange = props => event =>{
+  handleChange = state_name => event =>{
     this.setState({
-    [props] : event.target.value
+    [state_name] : event.target.value
     });
     
   };
 
   render(){
     return (
-      <div className="main">
+      <div className="calc">
         <p>所持素材</p>
-        <form className={this.props.classes.root} noValidate autoComplete="off">
-          <TextField
-            id="outlined-number"
-            label="金"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.state.pm}
-            onChange={this.handleChange('pm')}
+          <FormTextFields
+            classes={this.props.classes}
+            rarity={["金","紫","青","緑"]}
+            val={[this.state.pm,this.state.pp,this.state.pb,this.state.pg]}
+            var={['pm','pp','pb','pg']}
+            onChange={this.handleChange}
           />
-          <TextField
-            id="outlined-number"
-            label="紫"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.state.pp}
-            onChange={this.handleChange('pp')}
-          />
-          <TextField
-            id="outlined-number"
-            label="青"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.state.pb}
-            onChange={this.handleChange('pb')}
-          />
-          <TextField
-            id="outlined-number"
-            label="緑"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.state.pg}
-            onChange={this.handleChange('pg')}
-          />
-        </form>
         <p>必要素材</p>
-        <form className={this.props.classes.root} noValidate autoComplete="off">
-          <TextField
-            id="outlined-number"
-            label="金"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            defaultValue={this.state.nm}
-            value={this.state.nm}
-            onChange={this.handleChange('nm')}
+        <FormTextFields
+            classes={this.props.classes}
+            rarity={["金","紫","青","緑"]}
+            val={[this.state.nm,this.state.np,this.state.nb,this.state.ng]}
+            var={['nm','np','nb','ng']}
+            onChange={this.handleChange}
           />
-          <TextField
-            id="outlined-number"
-            label="紫"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            defaultValue={this.state.np}
-            value={this.state.np}
-            onChange={this.handleChange('np')}
+        <p>総合所持数</p>
+        <FormTextFields
+            classes={this.props.classes}
+            rarity={["金","紫","青","緑"]}
+            val={[this.state.sm,this.state.sp,this.state.sb,this.state.sg]}
+            var={['sm','sp','sb','sg']}
+            onChange={this.handleChange}
           />
-          <TextField
-            id="outlined-number"
-            label="青"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            defaultValue={this.state.nb}
-            value={this.state.nb}
-            onChange={this.handleChange('nb')}
-          />
-          <TextField
-            id="outlined-number"
-            label="緑"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            defaultValue={this.state.ng}
-            value={this.state.ng}
-            onChange={this.handleChange('ng')}
-          />
-        </form>
-        <p>合成により作れる素材</p>
-        <form className={this.props.classes.root} noValidate autoComplete="off">
-          <TextField
-            id="outlined-number"
-            label="金"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            disabled="true"
-            value={this.state.sm}
-          />
-          <TextField
-            id="outlined-number"
-            label="紫"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            disabled="true"
-            value={this.state.sp}
-          />
-          <TextField
-            id="outlined-number"
-            label="青"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            disabled="true"
-            value={this.state.sb}
-          />
-          <TextField
-            id="outlined-number"
-            label="緑"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            disabled="true"
-            value={this.state.sg}
-          />
-        </form>
         <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
       </div>
     );
@@ -296,20 +206,23 @@ class Calc extends React.Component{
 function Footer() {
   return (
     <div className="footer">
+      <div>
       <p>お問い合わせはDMまで</p>
       <div className="item">
         <a href="https://twitter.com/RAINEKO256">
-          <div>
+          <Button variant="contained">
             <i class="fab fa-twitter fa-2x twitter"></i>
             <p>@RAINeko256</p>
-          </div>
+          </Button>
         </a>
       </div>
       <p>Copyrights RAINeko</p>
+      </div>
     </div>
   );
 }
 
+//App
 function App() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -324,7 +237,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Calc classes={classes}/>
+      <div className="main">
+        <Explain/>
+        <Calc classes={classes}/>
+      </div>
       <Footer />
     </div>
   );
