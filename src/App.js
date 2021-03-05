@@ -1,9 +1,9 @@
-import "./App.css";
+import "style/App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import Explain from "./explain"
+import Explain from "js/components/block/explain";
 
 //ヘッダー
 function Header() {

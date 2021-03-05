@@ -1,4 +1,4 @@
-import "./Explain.css"
+import "style/block/Explain.css"
 function Explain(){
   return(
     <div className="explain">
