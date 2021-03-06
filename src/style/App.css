@@ -26,6 +26,7 @@
 /*App*/
 
 .App{
+  height: 100%;
   margin: 0 auto;
   background-color: white;
 }
@@ -40,10 +41,9 @@
 .main>div{
   padding-top: 2rem;
   margin-bottom: 2rem;
-  border-top: thin dashed black;
 }
 .calc{
-  margin-bottom: 4rem !important;
+  margin-bottom: 4rem ;
 }
 .main .calc form{
   margin-left: 1rem;
