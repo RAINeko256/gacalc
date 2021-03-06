@@ -1,21 +1,12 @@
-import "./App.css";
+import "style/App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import Explain from "./explain"
 
-//ヘッダー
-function Header() {
-  return (
-    <div className="header">
-      <div>
-        <h1 className="h_title">GAcalc</h1>
-        <p className="h_sub_title">Genshin Ascensions calculator</p>
-      </div>
-    </div>
-  );
-}
+import Header from "js/components/block/header";
+import Footer from "js/components/block/footer"
+import Explain from "js/components/block/explain";
 
 //コンテンツ
 
@@ -201,25 +192,6 @@ class Calc extends React.Component{
       </div>
     );
   }
-  }
-//フッター
-function Footer() {
-  return (
-    <div className="footer">
-      <div>
-      <p>お問い合わせはDMまで</p>
-      <div className="item">
-        <a href="https://twitter.com/RAINEKO256">
-          <Button variant="contained">
-            <i class="fab fa-twitter fa-2x twitter"></i>
-            <p>@RAINeko256</p>
-          </Button>
-        </a>
-      </div>
-      <p>Copyrights RAINeko</p>
-      </div>
-    </div>
-  );
 }
 
 //App

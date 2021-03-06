@@ -1,0 +1,42 @@
+.footer {
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #303841;
+    height: 10%;
+  }
+  
+  .footer > div{
+    margin-left: 0.5rem;
+  }
+  
+  .footer p {
+    margin: 0;
+    margin-bottom: 1%;
+  
+    color: white;
+  }
+  .f_item {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .footer Button p{
+    color: #303841;
+  }
+  
+  .f_time a {
+    text-decoration: none;
+  }
+  .f_item a div {
+    display: flex;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+  }
+  .f_item .twitter {
+    margin: auto 0;
+    height: 32px;
+    color: #00acee;
+  }

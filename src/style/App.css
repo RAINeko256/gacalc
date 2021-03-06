@@ -1,0 +1,65 @@
+/*
+  白、薄いグレー、グレー、赤
+  #d3d6db
+  #3a4750
+  #303841
+  #be3144
+*/
+/*レスポンシブ*/
+@media screen and (max-width: 600px) {
+  .App{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 999px) {
+  .App{
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .App{
+    width: 60%;
+  }
+}
+
+/*App*/
+
+.App{
+  height: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+/*コンテンツ*/
+.main {
+  height: 80%;
+  margin: 0 auto;
+
+  background-color: white;
+}
+.main>div{
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+.calc{
+  margin-bottom: 4rem ;
+}
+.main .calc form{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.calc Button{
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+.calc p{
+  margin: 0%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.main form{
+  display: flex;
+  justify-content: space-between;
+}
