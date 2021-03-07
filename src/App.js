@@ -16,7 +16,6 @@ class FormTextFields extends React.Component{
   }
 
   render(){
-    const vars=[this.props.var[0],this.props.var[1],this.props.var[2],this.props.var[3]];
     return(
       <form className={this.props.classes.root} noValidate autoComplete="off">
           <TextField
@@ -31,7 +30,7 @@ class FormTextFields extends React.Component{
             style={{width : '20%'}}
             size="small"
             value={this.props.val[0]}
-            onChange={this.props.onChange(vars[0])}
+            onChange={this.props.onChange(this.props.var,this.props.val,0)}
           />
           <TextField
             id="outlined-number"
@@ -45,7 +44,7 @@ class FormTextFields extends React.Component{
             style={{width : '20%'}}
             size="small"
             value={this.props.val[1]}
-            onChange={this.props.onChange(vars[1])}
+            onChange={this.props.onChange(this.props.var,this.props.val,1)}
           />
           <TextField
             id="outlined-number"
@@ -59,7 +58,7 @@ class FormTextFields extends React.Component{
             style={{width : '20%'}}
             size="small"
             value={this.props.val[2]}
-            onChange={this.props.onChange(vars[2])}
+            onChange={this.props.onChange(this.props.var,this.props.val,2)}
           />
           <TextField
             id="outlined-number"
@@ -73,7 +72,7 @@ class FormTextFields extends React.Component{
             style={{width : '20%'}}
             size="small"
             value={this.props.val[3]}
-            onChange={this.props.onChange(vars[3])}
+            onChange={this.props.onChange(this.props.var,this.props.val,3)}
           />
         </form>
     );
@@ -86,77 +85,53 @@ class Calc extends React.Component{
     this.handleChange = this.handleChange.bind(this);
     this.calculate = this.calculate.bind(this);
     this.state={
-      pm : 0,
-      pp : 0,
-      pb : 0,
-      pg : 0,
-      //p*は所持している素材の個数
-      nm : 6,
-      np : 9,
-      nb : 9,
-      ng : 1,
-      //n*は必要な素材の個数
-      sm : 0,
-      sp : 0,
-      sb : 0,
-      sg : 0,
-      //s*は合成により作れる個数（表示する素材の個数)
+      possess : [0,0,0,0],
+      //所持している素材の個数
+      necessary : [6,9,9,1],
+      //必要な素材の個数
+      total_possess : [0,0,0,0],
+      //合成により作れる個数を含めた所持数（表示する素材の個数)
     };
   }
 
   calculate=()=>{
-    //let pm,pp,pb,pg,nm,np,nb,ng,sm,sp,sb,sg;
-    let [pm,pp,pb,pg,nm,np,nb,ng,tsm,tsp,tsb,tsg]=
-      [this.state.pm,this.state.pp,this.state.pb,this.state.pg,this.state.nm,this.state.np,this.state.nb,this.state.ng,this.state.sm,this.state.sp,this.state.sb,this.state.sg];
-    let make_b,make_p,make_m;
-    //p*はposession_*、所持している素材
-    //n*はnecessary_*、必要素材
-    //s*はshortage_*、不足素材 ←現在、所持数を表示させる仕様になっているため、要変更！
-    //make_*は合成した分
-    //ts*はtemporary_shortage_[color_head_letter]で、setStateするときに文字が被らないようにしてる
+    let pos,neces,total_pos,compound,t_green,t_blue,t_purple,t_gold;
+    pos = this.state.possess.map(x => parseInt(x));
+    neces = this.state.necessary.map(x => parseInt(x));
+    total_pos = this.state.total_possess.map(x => parseInt(x));
+    compound = Array(3);//緑は合成で作れないので、compoundはない
+    //compoundは合成した分
     //
-    //必要数以上の素材を持っている場合((make_*+p*)>=n*)は、
-    //必要素材が集まっているので、所持数は必要数と等しい(n*)
-    //そうでない場合は、所持数は(make_* + p*)と等しい
+    //pos,neces,total_posは3,2,1,0の順に緑、青、紫、金
+    //compoundは0,1,2の順に青、紫、金の合成物
+    //必要数以上の素材を持っている場合((compound+pos)>=neces)は、
+    //必要素材が集まっているので、所持数は必要数と等しい(neces)
+    //そうでない場合は、所持数は(compound + pos)と等しい
 
-    //緑は合成で作れないので、make_gという値はない
-    tsg = (pg >= ng) ? (ng) : (pg);
+    t_green = (pos[3] >= neces[3]) ? (neces[3]) : (pos[3]);
     
-    make_b=Math.floor((((pg - ng)>=0)?(pg-ng):0)/3);
-    make_b=parseInt(make_b);
-    pb=parseInt(pb);
-    tsb = ((make_b + pb)>=nb)?(nb):(make_b + pb);
+    compound[0]=Math.floor((((pos[3] - neces[3])>=0)?(pos[3]-neces[3]):0)/3);
+    t_blue = ((compound[0] + pos[2])>=neces[2])?(neces[2]):(compound[0] + pos[2]);
 
-    make_p=Math.floor(((((pb + make_b)- nb)>=0)?((pb+make_b)-nb):0)/3);
-    make_p=parseInt(make_p);
-    pp=parseInt(pp);
-    tsp = ((make_p + pp)>=np)?(np):(make_p + pp);
+    compound[1]=Math.floor(((((pos[2] + compound[0])- neces[2])>=0)?((pos[2]+compound[0])-neces[2]):0)/3);
+    t_purple = ((compound[1] + pos[1])>=neces[1])?(neces[1]):(compound[1] + pos[1]);
 
-    make_m=Math.floor(((((pp + make_p)- np)>=0)?((pp+make_p)-np):0)/3)
-    make_m=parseInt(make_m);
-    pm=parseInt(pm);
-    tsm = ((make_m + pm)>=nm)?(nm):(make_m + pm);
+    compound[2]=Math.floor(((((pos[1] + compound[1])- neces[1])>=0)?((pos[1]+compound[1])-neces[1]):0)/3)
+    t_gold = ((compound[2] + pos[0])>=neces[0])?(neces[0]):(compound[2] + pos[0]);
 
-    console.log(make_b,make_p,make_m);
+    console.log(compound[0],compound[1],compound[2]);
     
     //setState
     this.setState({
-      sg : tsg
-      });
-    this.setState({
-      sb : tsb
-      });
-    this.setState({
-      sp : tsp
-      });
-    this.setState({
-      sm : tsm
+      total_possess : [t_gold,t_purple,t_blue,t_green]
       });
   }
 
-  handleChange = state_name => event =>{
+  handleChange = (list_name,list,rarity) => event =>{
+    let t_list = list;
+    t_list[rarity]=event.target.value;
     this.setState({
-    [state_name] : event.target.value
+    [list_name] : t_list
     });
     
   };
@@ -168,24 +143,24 @@ class Calc extends React.Component{
           <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
-            val={[this.state.pm,this.state.pp,this.state.pb,this.state.pg]}
-            var={['pm','pp','pb','pg']}
+            val={this.state.possess}
+            var={'possess'}
             onChange={this.handleChange}
           />
         <p>必要素材</p>
         <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
-            val={[this.state.nm,this.state.np,this.state.nb,this.state.ng]}
-            var={['nm','np','nb','ng']}
+            val={this.state.necessary}
+            var={'necessary'}
             onChange={this.handleChange}
           />
         <p>総合所持数</p>
         <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
-            val={[this.state.sm,this.state.sp,this.state.sb,this.state.sg]}
-            var={['sm','sp','sb','sg']}
+            val={this.state.total_possess}
+            var={'total_possess'}
             onChange={this.handleChange}
           />
         <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
