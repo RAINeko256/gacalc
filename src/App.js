@@ -5,8 +5,10 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Header from "js/components/block/header";
-import Footer from "js/components/block/footer"
 import Explain from "js/components/block/explain";
+import CalcOption from "js/components/block/calc-option";
+import Footer from "js/components/block/footer";
+
 
 //コンテンツ
 
@@ -18,63 +20,60 @@ class FormTextFields extends React.Component{
   render(){
     return(
       <form className={this.props.classes.root} noValidate autoComplete="off">
-          <TextField
-            id="outlined-number"
-            label={this.props.rarity[0]}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.props.val[0]}
-            onChange={this.props.onChange(this.props.var,this.props.val,0)}
-          />
-          <TextField
-            id="outlined-number"
-            label={this.props.rarity[1]}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.props.val[1]}
-            onChange={this.props.onChange(this.props.var,this.props.val,1)}
-          />
-          <TextField
-            id="outlined-number"
-            label={this.props.rarity[2]}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.props.val[2]}
-            onChange={this.props.onChange(this.props.var,this.props.val,2)}
-          />
-          <TextField
-            id="outlined-number"
-            label={this.props.rarity[3]}
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            className="input"
-            style={{width : '20%'}}
-            size="small"
-            value={this.props.val[3]}
-            onChange={this.props.onChange(this.props.var,this.props.val,3)}
-          />
-        </form>
+        <TextField
+          label={this.props.rarity[0]}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          value={this.props.val[0]}
+          onChange={this.props.onChange(this.props.var,this.props.val,0)}
+          disabled={this.props.talent_mode}
+        />
+        <TextField
+          label={this.props.rarity[1]}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          value={this.props.val[1]}
+          onChange={this.props.onChange(this.props.var,this.props.val,1)}
+        />
+        <TextField
+          label={this.props.rarity[2]}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          value={this.props.val[2]}
+          onChange={this.props.onChange(this.props.var,this.props.val,2)}
+        />
+        <TextField
+          label={this.props.rarity[3]}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          className="input"
+          style={{width : '20%'}}
+          size="small"
+          value={this.props.val[3]}
+          onChange={this.props.onChange(this.props.var,this.props.val,3)}
+        />
+      </form>
     );
   }
 }
@@ -83,6 +82,7 @@ class Calc extends React.Component{
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleModeChange = this.handleModeChange.bind(this);
     this.calculate = this.calculate.bind(this);
     this.state={
       possess : [0,0,0,0],
@@ -91,6 +91,8 @@ class Calc extends React.Component{
       //必要な素材の個数
       total_possess : [0,0,0,0],
       //合成により作れる個数を含めた所持数（表示する素材の個数)
+      three_mode : false,
+      //天賦素材モード(デフォはオフ)
     };
   }
 
@@ -120,7 +122,6 @@ class Calc extends React.Component{
     t_gold = ((compound[2] + pos[0])>=neces[0])?(neces[0]):(compound[2] + pos[0]);
 
     console.log(compound[0],compound[1],compound[2]);
-    
     //setState
     this.setState({
       total_possess : [t_gold,t_purple,t_blue,t_green]
@@ -136,9 +137,17 @@ class Calc extends React.Component{
     
   };
 
+  handleModeChange(mode){
+    this.setState({
+      three_mode : mode
+    });
+  }
+
   render(){
     return (
       <div className="calc">
+        <p>設定</p>
+          <CalcOption onChange={this.handleModeChange}/>
         <p>所持素材</p>
           <FormTextFields
             classes={this.props.classes}
@@ -146,6 +155,7 @@ class Calc extends React.Component{
             val={this.state.possess}
             var={'possess'}
             onChange={this.handleChange}
+            talent_mode={this.state.three_mode}
           />
         <p>必要素材</p>
         <FormTextFields
@@ -154,6 +164,7 @@ class Calc extends React.Component{
             val={this.state.necessary}
             var={'necessary'}
             onChange={this.handleChange}
+            talent_mode={this.state.three_mode}
           />
         <p>総合所持数</p>
         <FormTextFields
@@ -162,6 +173,7 @@ class Calc extends React.Component{
             val={this.state.total_possess}
             var={'total_possess'}
             onChange={this.handleChange}
+            talent_mode={this.state.three_mode}
           />
         <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
       </div>
