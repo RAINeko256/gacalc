@@ -15,6 +15,7 @@ function Footer() {
             </Button>
           </a>
         </div>
+        <p>※当サイトの内容により生じた損害等の一切について責任を負いかねますのでご了承ください。</p>
         <p>Copyrights RAINeko</p>
         </div>
       </div>
