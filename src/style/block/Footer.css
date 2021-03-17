@@ -17,26 +17,24 @@
   
     color: white;
   }
+  .f_item_box{
+    display: flex;
+  }
   .f_item {
-    width: 100%;
+    margin-right: 2%;
     display: flex;
     flex-wrap: nowrap;
   }
   
-  .footer Button p{
+  .f_item Button p{
     color: #303841;
   }
   
-  .f_time a {
+  :any-link{
     text-decoration: none;
   }
   .f_item a div {
     display: flex;
     flex-wrap: nowrap;
     vertical-align: middle;
-  }
-  .f_item .twitter {
-    margin: auto 0;
-    height: 32px;
-    color: #00acee;
   }
