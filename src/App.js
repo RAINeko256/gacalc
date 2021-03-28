@@ -3,12 +3,13 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import {ThemeProvider} from '@material-ui/core/styles';
 
 import Header from "js/components/block/header";
 import Explain from "js/components/block/explain";
 import CalcOption from "js/components/block/calc-option";
 import Footer from "js/components/block/footer";
-
+import theme from "style/theme.js";
 
 //コンテンツ
 
@@ -147,16 +148,16 @@ class Calc extends React.Component{
     return (
       <div className="calc">
         <p>設定</p>
-          <CalcOption onChange={this.handleModeChange}/>
+        <CalcOption onChange={this.handleModeChange}/>
         <p>所持素材</p>
-          <FormTextFields
+        <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
             val={this.state.possess}
             var={'possess'}
             onChange={this.handleChange}
             talent_mode={this.state.three_mode}
-          />
+        />
         <p>必要素材</p>
         <FormTextFields
             classes={this.props.classes}
@@ -165,7 +166,7 @@ class Calc extends React.Component{
             var={'necessary'}
             onChange={this.handleChange}
             talent_mode={this.state.three_mode}
-          />
+        />
         <p>総合所持数</p>
         <FormTextFields
             classes={this.props.classes}
@@ -174,8 +175,8 @@ class Calc extends React.Component{
             var={'total_possess'}
             onChange={this.handleChange}
             talent_mode={this.state.three_mode}
-          />
-        <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
+        />
+        <Button variant="contained" onClick={()=>{this.calculate()}} color="secondary">Calculate!</Button>
       </div>
     );
   }
@@ -194,6 +195,7 @@ function App() {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Header />
       <div className="main">
@@ -202,6 +204,7 @@ function App() {
       </div>
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }
 

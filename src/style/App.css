@@ -1,9 +1,9 @@
 /*
-  白、薄いグレー、グレー、赤
-  #d3d6db
-  #3a4750
+  白、金(secondary)、赤(primary)、グレー(background)
+  #faf9f5
+  #d7aa2e
+  #ff0114
   #303841
-  #be3144
 */
 /*レスポンシブ*/
 @media screen and (max-width: 600px) {
@@ -28,35 +28,29 @@
 .App{
   height: 100%;
   margin: 0 auto;
-  background-color: white;
 }
 
 /*コンテンツ*/
 .main {
-  height: 80%;
   margin: 0 auto;
-
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
   background-color: white;
 }
 .main>div{
   padding-top: 2rem;
-  margin-bottom: 2rem;
 }
-.calc{
-  margin-bottom: 4rem ;
-}
+
 .main .calc form{
-  margin-left: 1rem;
   margin-right: 1rem;
 }
 
 .calc Button{
   margin-top: 0.5rem;
-  margin-left: 0.5rem;
 }
 .calc p{
   margin: 0%;
-  margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
 .main form{

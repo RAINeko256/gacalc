@@ -1,40 +1,40 @@
 .footer {
-    margin: 0 auto;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: #303841;
-    height: 10%;
-  }
-  
-  .footer > div{
-    margin-left: 0.5rem;
-  }
-  
-  .footer p {
-    margin: 0;
-    margin-bottom: 1%;
-  
-    color: white;
-  }
-  .f_item_box{
-    display: flex;
-  }
-  .f_item {
-    margin-right: 2%;
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  
-  .f_item Button p{
-    color: #303841;
-  }
-  
-  :any-link{
-    text-decoration: none;
-  }
-  .f_item a div {
-    display: flex;
-    flex-wrap: nowrap;
-    vertical-align: middle;
-  }
+  bottom: 0;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  background-color: #303841;
+}
+
+.footer > div{
+  margin-left: 0.5rem;
+}
+
+.footer p {
+  margin: 0;
+  margin-bottom: 1%;
+
+  color: white;
+}
+.f_item_box{
+  display: flex;
+}
+.f_item {
+  margin-right: 2%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.f_item Button p{
+  color: #303841;
+}
+
+:any-link{
+  text-decoration: none;
+}
+.f_item a div {
+  display: flex;
+  flex-wrap: nowrap;
+  vertical-align: middle;
+}
