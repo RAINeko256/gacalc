@@ -125,7 +125,8 @@ class Calc extends React.Component{
     console.log(compound[0],compound[1],compound[2]);
     //setState
     this.setState({
-      total_possess : [t_gold,t_purple,t_blue,t_green]
+      //necesからt_*を引いた数が不足数になる
+      total_possess : [(neces[0] - t_gold),(neces[1] - t_purple),(neces[2] - t_blue),(neces[3] - t_green)]
       });
   }
 
@@ -167,7 +168,7 @@ class Calc extends React.Component{
             onChange={this.handleChange}
             talent_mode={this.state.three_mode}
         />
-        <p>総合所持数</p>
+        <p>不足数</p>
         <FormTextFields
             classes={this.props.classes}
             rarity={["金","紫","青","緑"]}
