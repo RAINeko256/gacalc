@@ -4,7 +4,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  background-color: #303841;
+  background-color: #faf9f5;
 }
 
 .footer > div{
@@ -15,19 +15,16 @@
   margin: 0;
   margin-bottom: 1%;
 
-  color: white;
+  color: black;
 }
 .f_item_box{
   display: flex;
+  margin-bottom: 1rem;
 }
 .f_item {
   margin-right: 2%;
   display: flex;
   flex-wrap: nowrap;
-}
-
-.f_item Button p{
-  color: #303841;
 }
 
 :any-link{

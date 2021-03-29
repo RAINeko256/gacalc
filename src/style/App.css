@@ -29,21 +29,19 @@
   height: 100%;
   margin: 0 auto;
 }
-
+.main , .footer{
+  border-top: solid 1px black;
+}
 /*コンテンツ*/
 .main {
   margin: 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 2rem;
-  background-color: white;
+  background-color: #faf9f5;
 }
 .main>div{
   padding-top: 2rem;
-}
-
-.main .calc form{
-  margin-right: 1rem;
 }
 
 .calc Button{
@@ -51,7 +49,6 @@
 }
 .calc p{
   margin: 0%;
-  margin-right: 0.5rem;
 }
 .main form{
   display: flex;
