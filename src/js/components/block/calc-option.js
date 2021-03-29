@@ -27,7 +27,7 @@ class CalcOption extends React.Component{
           <Switch
             checked={this.state.three_mode_is_checked}
             onChange={this.handleChange}
-            color="secondary"
+            color="primary"
           />
         }
         label="天賦素材モード"

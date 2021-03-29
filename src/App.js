@@ -2,13 +2,15 @@ import "style/App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Paper from '@material-ui/core/Paper';
 import { makeStyles } from "@material-ui/core/styles";
+import {ThemeProvider} from '@material-ui/core/styles';
 
 import Header from "js/components/block/header";
 import Explain from "js/components/block/explain";
 import CalcOption from "js/components/block/calc-option";
 import Footer from "js/components/block/footer";
-
+import theme from "style/theme.js";
 
 //コンテンツ
 
@@ -124,7 +126,8 @@ class Calc extends React.Component{
     console.log(compound[0],compound[1],compound[2]);
     //setState
     this.setState({
-      total_possess : [t_gold,t_purple,t_blue,t_green]
+      //necesからt_*を引いた数が不足数になる
+      total_possess : [(neces[0] - t_gold),(neces[1] - t_purple),(neces[2] - t_blue),(neces[3] - t_green)]
       });
   }
 
@@ -146,36 +149,38 @@ class Calc extends React.Component{
   render(){
     return (
       <div className="calc">
-        <p>設定</p>
+        <Paper >
+          <p>設定</p>
           <CalcOption onChange={this.handleModeChange}/>
-        <p>所持素材</p>
+          <p>所持素材</p>
           <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.possess}
-            var={'possess'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.possess}
+              var={'possess'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
           />
-        <p>必要素材</p>
-        <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.necessary}
-            var={'necessary'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
+          <p>必要素材</p>
+          <FormTextFields
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.necessary}
+              var={'necessary'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
           />
-        <p>総合所持数</p>
-        <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.total_possess}
-            var={'total_possess'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
+          <p>不足数</p>
+          <FormTextFields
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.total_possess}
+              var={'total_possess'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
           />
-        <Button variant="contained" onClick={()=>{this.calculate()}}>Calculate!</Button>
+          <Button variant="contained" onClick={()=>{this.calculate()}} color="secondary">Calculate!</Button>
+        </Paper>
       </div>
     );
   }
@@ -194,6 +199,7 @@ function App() {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Header />
       <div className="main">
@@ -202,6 +208,7 @@ function App() {
       </div>
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }
 
