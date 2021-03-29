@@ -2,6 +2,7 @@ import "style/App.css";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Paper from '@material-ui/core/Paper';
 import { makeStyles } from "@material-ui/core/styles";
 import {ThemeProvider} from '@material-ui/core/styles';
 
@@ -148,36 +149,38 @@ class Calc extends React.Component{
   render(){
     return (
       <div className="calc">
-        <p>設定</p>
-        <CalcOption onChange={this.handleModeChange}/>
-        <p>所持素材</p>
-        <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.possess}
-            var={'possess'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
-        />
-        <p>必要素材</p>
-        <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.necessary}
-            var={'necessary'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
-        />
-        <p>不足数</p>
-        <FormTextFields
-            classes={this.props.classes}
-            rarity={["金","紫","青","緑"]}
-            val={this.state.total_possess}
-            var={'total_possess'}
-            onChange={this.handleChange}
-            talent_mode={this.state.three_mode}
-        />
-        <Button variant="contained" onClick={()=>{this.calculate()}} color="secondary">Calculate!</Button>
+        <Paper >
+          <p>設定</p>
+          <CalcOption onChange={this.handleModeChange}/>
+          <p>所持素材</p>
+          <FormTextFields
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.possess}
+              var={'possess'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
+          />
+          <p>必要素材</p>
+          <FormTextFields
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.necessary}
+              var={'necessary'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
+          />
+          <p>不足数</p>
+          <FormTextFields
+              classes={this.props.classes}
+              rarity={["金","紫","青","緑"]}
+              val={this.state.total_possess}
+              var={'total_possess'}
+              onChange={this.handleChange}
+              talent_mode={this.state.three_mode}
+          />
+          <Button variant="contained" onClick={()=>{this.calculate()}} color="secondary">Calculate!</Button>
+        </Paper>
       </div>
     );
   }

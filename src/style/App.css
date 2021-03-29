@@ -35,8 +35,8 @@
 /*コンテンツ*/
 .main {
   margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   padding-bottom: 2rem;
   background-color: #faf9f5;
 }
@@ -50,6 +50,12 @@
 .calc p{
   margin: 0%;
 }
+
+.calc > div{
+  /*Paperをセレクトしてる*/
+  padding: 0.5rem;
+}
+
 .main form{
   display: flex;
   justify-content: space-between;
