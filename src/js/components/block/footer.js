@@ -9,7 +9,7 @@ function Footer() {
   return (
     <div className="footer">
       <div>
-        <p>お問い合わせはDMまで</p>
+        <p>お問い合わせ等はDMまで</p>
         <div className="f_item_box">
           <div className="f_item">
             <a href="https://twitter.com/RAINEKO256">
