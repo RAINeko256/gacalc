@@ -6,20 +6,15 @@
   #303841
 */
 /*レスポンシブ*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 50rem) {
   .App{
     width: 100%;
   }
 }
 
-@media screen and (min-width: 601px) and (max-width: 999px) {
+@media screen and (min-width: 50rem) {
   .App{
-    width: 600px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .App{
-    width: 60%;
+    width: 50rem;
   }
 }
 
