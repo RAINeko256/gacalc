@@ -1,3 +1,10 @@
 .MuiAccordionDetails-root{
     display: grid !important;
 }
+h3{
+    line-height: 4;
+}
+p{
+    line-height: 1.5;
+}
+

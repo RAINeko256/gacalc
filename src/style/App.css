@@ -30,12 +30,11 @@
 /*コンテンツ*/
 .main {
   margin: 0 auto;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 2rem;
+  padding-inline: 0.5rem;
+  padding-block : 2rem;
   background-color: #faf9f5;
 }
-.main>div{
+.calc{
   padding-top: 2rem;
 }
 
