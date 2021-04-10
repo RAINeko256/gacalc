@@ -1,0 +1,26 @@
+/*参考:https://www.color-hex.com/color/d7aa2e*/
+.gold{
+  background-color: #d7aa2e !important;
+}
+.purple{
+  background-color: #aa2ed7 !important;
+}
+.blue{
+  background-color: #2ed0d7 !important;
+}
+.green{
+  background-color: #2ed7aa !important;
+}
+
+.missing_container{
+  display: flex;
+  justify-content: space-between;
+}
+.badge_container_four{
+  width: 25%;
+  padding-inline: 8px;
+}
+.badge_container_three{
+  width: calc(100%/3);
+  padding-inline: 8px;
+}

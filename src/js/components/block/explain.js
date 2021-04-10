@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -41,6 +42,7 @@ function Explain(){
           <p>素材の
             <em>所持数と必要数とを入力</em>し、<em>Calculateボタンを押す</em>と、不足数が表示されます。</p>
           <p>レア度が３段階しかない天賦素材などについては、天賦素材モードをオンにしてご利用ください。</p>
+          <p>合成できない分(1,2個の端数)については、不足数の右上に小さく表示されます。</p>
           <h3>注意</h3>
           <p>初期状態で、<em>必要素材はlv1→lv90までに必要な突破素材の数</em>になっております。必要に応じてご変更ください。</p>
         </AccordionDetails>

@@ -1,0 +1,6 @@
+.inputs_four{
+  width: 25% !important;
+}
+.inputs_three{
+  width: calc(100%/3) !important;
+}

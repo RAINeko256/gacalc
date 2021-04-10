@@ -6,20 +6,15 @@
   #303841
 */
 /*レスポンシブ*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 50rem) {
   .App{
     width: 100%;
   }
 }
 
-@media screen and (min-width: 601px) and (max-width: 999px) {
+@media screen and (min-width: 50rem) {
   .App{
-    width: 600px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .App{
-    width: 60%;
+    width: 50rem;
   }
 }
 
@@ -35,12 +30,11 @@
 /*コンテンツ*/
 .main {
   margin: 0 auto;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 2rem;
+  padding-inline: 0.5rem;
+  padding-block : 2rem;
   background-color: #faf9f5;
 }
-.main>div{
+.calc{
   padding-top: 2rem;
 }
 
