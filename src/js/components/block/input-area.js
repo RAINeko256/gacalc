@@ -17,6 +17,7 @@ class InputArea extends React.Component{
         <TextField
           label={this.props.rarity[i]}
           type="number"
+          InputProps={{inputProps:{min:0,max:9999}}}
           InputLabelProps={{
             shrink: true,
           }}
