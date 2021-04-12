@@ -1,3 +1,6 @@
+form{
+  width: calc(100% - 50px);
+}
 .inputs_four{
   width: 25% !important;
 }

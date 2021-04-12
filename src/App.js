@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from '@material-ui/core/styles';
 
+import ClearButton from "js/components/atoms/clear-button";
 import Header from "js/components/block/header";
 import Explain from "js/components/block/explain";
 import CalcOption from "js/components/block/calc-option";
@@ -18,6 +19,7 @@ import theme from "style/theme.js";
 class Calc extends React.Component {
   constructor(props) {
     super(props);
+    this.setInputZero = this.setInputZero.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleModeChange = this.handleModeChange.bind(this);
     this.calculate = this.calculate.bind(this);
@@ -73,13 +75,18 @@ class Calc extends React.Component {
     });
   }
 
+  setInputZero(list_name){
+    this.setState({
+      [list_name]: [0,0,0,0]
+    });
+  }
+
   handleChange = (list_name, list, rarity) => event => {
     let t_list = list;
     t_list[rarity] = event.target.value;
     this.setState({
       [list_name]: t_list
     });
-
   };
 
   handleModeChange(mode) {
@@ -103,6 +110,7 @@ class Calc extends React.Component {
           <p>設定</p>
             <CalcOption onChange={this.handleModeChange} />
           <p>所持素材</p>
+          <div className="input-area-container">
             <InputArea
               classes={this.props.classes}
               rarity={["金", "紫", "青", "緑"]}
@@ -111,7 +119,13 @@ class Calc extends React.Component {
               onChange={this.handleChange}
               isThreeMode={this.state.three_mode ? 1 : 0}
             />
+            <ClearButton
+              onClick={this.setInputZero}
+              var={'possess'}
+            />
+          </div>
           <p>必要素材</p>
+          <div className="input-area-container">
             <InputArea
               classes={this.props.classes}
               rarity={["金", "紫", "青", "緑"]}
@@ -120,6 +134,11 @@ class Calc extends React.Component {
               onChange={this.handleChange}
               isThreeMode={this.state.three_mode ? 1 : 0}
             />
+            <ClearButton
+              onClick={this.setInputZero}
+              var={'necessary'}
+            />
+          </div>
           <p>不足数 , 剰余(右上)</p>
             <ShowMissing
               isThreeMode={this.state.three_mode ? 1 : 0}

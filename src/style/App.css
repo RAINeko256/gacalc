@@ -54,3 +54,6 @@
   display: flex;
   justify-content: space-between;
 }
+.input-area-container{
+  display: flex;
+}

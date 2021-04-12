@@ -13,12 +13,16 @@
 }
 
 .missing_container{
+  width: calc(100% - 50px);
+  /*clearボタンの幅分だけ差し引いてる*/
+
   display: flex;
   justify-content: space-between;
 }
 .badge_container_four{
   width: 25%;
   padding-inline: 8px;
+  /*TextFieldの仕様で8pxだけinlineに余白があるのでその分の調整*/
 }
 .badge_container_three{
   width: calc(100%/3);
