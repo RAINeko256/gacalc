@@ -12,9 +12,12 @@ class ClearButton extends React.Component{
   render(){
     const array_name = this.props.var;
     return(
-      <IconButton onClick={()=>{this.props.onClick(array_name)}}>
-        <BackspaceIcon/>
-      </IconButton>
+      <div className="clear-button-container">
+        <IconButton onClick={()=>{this.props.onClick(array_name)}}>
+          <BackspaceIcon/>
+        </IconButton>
+        <p>Clear</p>
+      </div>
     );
   }
 }

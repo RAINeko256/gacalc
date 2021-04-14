@@ -13,14 +13,11 @@ class ShowMissing extends React.Component{
     const color = ['gold','purple','blue','green'];
     const mode = "badge_container_" + (this.props.isThreeMode==0 ? "four" : "three");
     let list = [];
-    console.log(this.props.isThreeMode);
     for(let i = this.props.isThreeMode; i<4; i++){
-      console.log(this.props.surplus);
-      console.log(color[i]);
       list.push(
         <div className={mode}>
           <Badge badgeContent={this.props.surplus[i]} color="primary">
-            <Avatar className={color[i]}>{this.props.val[i]}</Avatar>
+            <Avatar className={color[i]}>{this.props.val[i] != 0 ? this.props.val[i] : "ok"}</Avatar>
           </Badge>
         </div>
       )
