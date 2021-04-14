@@ -2,9 +2,11 @@
     display: grid !important;
 }
 h3{
+    margin: 0%;
     line-height: 4;
 }
 p{
+    margin: 0%;
     line-height: 1.5;
 }
 
