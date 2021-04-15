@@ -1,3 +1,7 @@
-.input-area-container > button{
+.clear-button-container > button{
   margin-top: 0% !important;
+}
+
+.clear-button-container{
+  text-align: center;
 }
